@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<MCUWorkspace Schema="67" Class="CMCUWorkspace" Path="" PathAbs="" MCUType="3" ActiveProjectIndex="1">
+<MCUProjects>
+<ProjectItem ProjectPath="&amp;ASCC Project\C Project.mcuprj" ProjectPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\C Project.mcuprj"/>
+<ProjectItem ProjectPath="&amp;ASCAssembly Project\Assembly Project.mcuprj" ProjectPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\Assembly Project.mcuprj"/>
+</MCUProjects>
+</MCUWorkspace>

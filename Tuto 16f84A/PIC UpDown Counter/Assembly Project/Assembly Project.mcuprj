@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<MCUProject Schema="67" Class="CMCUProject" Path="" PathAbs="" ProjectType="0">
+<ProjectFolders/>
+<ProjectFiles>
+<FileItem>
+<MCUFile Class="CMCUFile" Path="&amp;ASCUpDown Counter.asm" PathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\UpDown Counter.asm" UseFileOptions="0" FileOptions=""/>
+</FileItem>
+</ProjectFiles>
+<BuildSettings>
+<MCUProjectBuildSettings Class="CMCUProjectBuildSettings" ToolGroupType="1" IntermediatePath="&amp;ASC..\..\..\..\..\..\Documents and Settings\GRKnoblI\My Documents\@Demos\@EWB\MCU Module\PIC\PIC UpDown Counter\Assembly Project" IntermediatePathAbs="&amp;ASCC:\Documents and Settings\GRKnoblI\My Documents\@Demos\@EWB\MCU Module\PIC\PIC UpDown Counter\Assembly Project" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\" TargetFileType="6" SimPath="&amp;ASC.\" SimPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\" SimFile="&amp;ASCUpDown Counter.hex" CodeLoadType="0">
+<Assembler>
+<MCUToolSettings Class="CMCUToolSettings" ToolType="1" IntermediatePath="&amp;ASC.\" IntermediatePathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\" TargetType="6" IncludeOptions="&amp;ASC#INCLUDE P16F84.INC" PreFilenameOptions="&amp;ASC /q /c /p16F84 " PostFilenameOptions="">
+<MCULibraries/>
+</MCUToolSettings>
+</Assembler>
+<Linker>
+<MCUToolSettings Class="CMCUToolSettings" ToolType="2" IntermediatePath="&amp;ASC.\" IntermediatePathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\" TargetType="6" IncludeOptions="" PreFilenameOptions="&amp;ASCC:\PROGRA~1\NATION~1\CIRCUI~1.0\MPASM\LKR\16f84.lkr" PostFilenameOptions="&amp;ASC/mC:\Documents and Settings\GRKnoblI\My Documents\@Demos\@EWB\MCU Module\PIC\PIC UpDown Counter\Assembly Project\Assembly Project.map /oC:\Documents and Settings\GRKnoblI\My Documents\@Demos\@EWB\MCU Module\PIC\PIC UpDown Counter\Assembly Project\Assembly Project.out">
+<MCULibraries/>
+</MCUToolSettings>
+</Linker>
+<Library>
+<MCUToolSettings Class="CMCUToolSettings" ToolType="3" IntermediatePath="&amp;ASC.\" IntermediatePathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\Assembly Project\" TargetType="7" IncludeOptions="" PreFilenameOptions="&amp;ASC /c C:\Documents and Settings\GRKnoblI\My Documents\@Demos\@EWB\MCU Module\PIC\PIC UpDown Counter\Assembly Project\Assembly Project.lib" PostFilenameOptions="">
+<MCULibraries/>
+</MCUToolSettings>
+</Library>
+</MCUProjectBuildSettings>
+</BuildSettings>
+</MCUProject>

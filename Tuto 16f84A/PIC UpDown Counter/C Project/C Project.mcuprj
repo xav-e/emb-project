@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<MCUProject Schema="67" Class="CMCUProject" Path="" PathAbs="" ProjectType="0">
+<ProjectFolders/>
+<ProjectFiles>
+<FileItem>
+<MCUFile Class="CMCUFile" Path="&amp;ASCUpDown_Counter.c" PathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\UpDown_Counter.c" UseFileOptions="1" FileOptions="&amp;ASC--ASMLIST -G -M -N255 -P --OPT=none --CHIP=16F84  --ERRFORMAT=&quot;error; file %f; line %l; column %c; %s&quot;  --WARNFORMAT=&quot;warning; file %f; line %l; column %c; %s&quot;  --MSGFORMAT=&quot;message; file %f; line %l; column %c; %s&quot; "/>
+</FileItem>
+</ProjectFiles>
+<BuildSettings>
+<MCUProjectBuildSettings Class="CMCUProjectBuildSettings" ToolGroupType="2" IntermediatePath="&amp;ASC.\" IntermediatePathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" TargetFileType="6" SimPath="&amp;ASC.\" SimPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" SimFile="&amp;ASCC Project.hex" CodeLoadType="0">
+<Assembler>
+<MCUToolSettings Class="CMCUToolSettings" ToolType="1" IntermediatePath="&amp;ASC.\" IntermediatePathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" TargetType="6" IncludeOptions="&amp;ASC#INCLUDE P16F84.INC" PreFilenameOptions="&amp;ASC /q /c /p16F84 " PostFilenameOptions="">
+<MCULibraries/>
+</MCUToolSettings>
+</Assembler>
+<Linker>
+<MCUToolSettings Class="CMCUToolSettings" ToolType="2" IntermediatePath="&amp;ASC.\" IntermediatePathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" TargetType="6" IncludeOptions="" PreFilenameOptions="&amp;ASCC:\PROGRA~1\NATION~1\CIRCUI~1.0\MPASM\LKR\16f84.lkr" PostFilenameOptions="&amp;ASC/mC:\Documents and Settings\GRKnoblI\My Documents\@Demos\@EWB\MCU Module\PIC\PIC UpDown Counter\C Project\C Project.map /oC:\Documents and Settings\GRKnoblI\My Documents\@Demos\@EWB\MCU Module\PIC\PIC UpDown Counter\C Project\C Project.out">
+<MCULibraries/>
+</MCUToolSettings>
+</Linker>
+<Compiler>
+<MCUToolSettings Class="CMCUToolSettings" ToolType="-1" IntermediatePath="&amp;ASC.\" IntermediatePathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" TargetType="-1" IncludeOptions="" PreFilenameOptions="&amp;ASC--ASMLIST -G -M -N255 -P --OPT=none --CHIP=16F84  --ERRFORMAT=&quot;error; file %f; line %l; column %c; %s&quot;  --WARNFORMAT=&quot;warning; file %f; line %l; column %c; %s&quot;  --MSGFORMAT=&quot;message; file %f; line %l; column %c; %s&quot; " PostFilenameOptions="">
+<MCULibraries/>
+</MCUToolSettings>
+</Compiler>
+<Library>
+<MCUToolSettings Class="CMCUToolSettings" ToolType="6" IntermediatePath="&amp;ASC.\" IntermediatePathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" OutputPath="&amp;ASC.\" OutputPathAbs="&amp;ASCC:\Users\Xavier\Desktop\MULTISIM\PIC UpDown Counter\C Project\" TargetType="7" IncludeOptions="" PreFilenameOptions="&amp;ASC r &quot;C Project.lib&quot;" PostFilenameOptions="">
+<MCULibraries/>
+</MCUToolSettings>
+</Library>
+</MCUProjectBuildSettings>
+</BuildSettings>
+</MCUProject>
