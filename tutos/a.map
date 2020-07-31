@@ -1,0 +1,41 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Wed Jul 29 19:03:17 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                MAIN_PROG       code   0x000003    program   0x00001c
+        .config_2007_ED.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000010      
+                            0x002007    0x002007      
+            18 out of 1094 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    DELAY   0x00000c    program     static C:\Users\Xavier\Documents\ed.asm
+                    LOOP1   0x00000c    program     static C:\Users\Xavier\Documents\ed.asm
+                     MAIN   0x000007    program     static C:\Users\Xavier\Documents\ed.asm
+                    START   0x000003    program     static C:\Users\Xavier\Documents\ed.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000003    program     static C:\Users\Xavier\Documents\ed.asm
+                     MAIN   0x000007    program     static C:\Users\Xavier\Documents\ed.asm
+                    DELAY   0x00000c    program     static C:\Users\Xavier\Documents\ed.asm
+                    LOOP1   0x00000c    program     static C:\Users\Xavier\Documents\ed.asm
+
+
