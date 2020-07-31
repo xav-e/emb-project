@@ -1,0 +1,34 @@
+	list p=16f877a
+	include "p16f877a.inc"
+
+	org 00h	
+
+inicio	
+		BSF	STATUS,5	;Cambio de banco
+		BCF	TRISB,2		;Puerto RB2 como salida
+		BCF	STATUS,5	;vuelvo al banco 0
+		MOVLW B'00001000'
+		MOVWF CCP1CON	
+		BSF   T1CON,0	
+		CLRF  TMR1L
+		CLRF  TMR1H
+		CLRF  CCPR1H
+		MOVLW d'20'
+		MOVWF CCPR1L
+ARRIBA	
+		BSF	PORTB,2
+		CLRF  TMR1L
+		CLRF  TMR1H
+		BCF PIR1,2		
+	ARRIBA1	BTFSS PIR1,2
+		GOTO ARRIBA1
+		NOP
+		NOP
+		BCF PORTB,2
+		CLRF  TMR1L
+		CLRF  TMR1H		
+		BCF PIR1,2
+AQUI	BTFSS PIR1,2
+		GOTO AQUI
+		GOTO ARRIBA
+		END
