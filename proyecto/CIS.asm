@@ -1,7 +1,7 @@
 LIST P=16f877a
 #include "p16f877a.inc"
 
-	ORG	0
+	ORG	0X00
 	GOTO	INICIO
 INICIO							;TINACO
 		BSF		STATUS,RP0
@@ -100,4 +100,11 @@ FERRETERIA
 								;YA VOLVERIAMOS A NUESTRO BELLO GOTO START PARA SEGUIR VIENDO LOS NIVELES
 								;CREO QUE ASI SEGUIRIAMOS EL FLUJO DE QUE EL NIVEL DETERMINA LAS ACCIONES A TOMAR OBVIO CON
 								;CON TODAS SUS RESPECTIVAS PREGUNTAS Y OTROS CONDICIONANTES PERO NI IDEA JAJAJAJ
+								;
+								;		
+								;	
+								;UPDATE 01/08 - 1:27: BRO, SI ACTIVAMOS MODO MANUAL HAY QUE PONER EL A/D CON EL RELOJ INTERNO PORQUE EN SLEEP SE APAGA EL CRISTAL, ES DECIR EL ADCON0 DEBE ESTAR EN B '00000011' ES DECIR 0X03
+								;VER LA Pág 129 del manual y la tabla por si no me explique bien, creo que en esencia solo le cambia la velocidad al clock, que ahora es interno
+								;no lo modifique directamente, porque no quiero cambiarte nada sin saber
+								;SLEEP PAG 158
 	END

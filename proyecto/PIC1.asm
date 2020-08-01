@@ -1,0 +1,10 @@
+LIST P=16f877a
+#include "p16f877a.inc"
+
+	ORG	0X00
+	
+
+INTERRUPTS	ORG 0X04
+	
+
+END
