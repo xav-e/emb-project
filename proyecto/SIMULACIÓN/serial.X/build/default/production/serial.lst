@@ -1,4 +1,4 @@
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  1
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 000F   3090           00032         MOVLW h'90'
 0010   0098           00033         MOVWF RCSTA;        CONFIGURANDO EL RCSTA PARA ASINCRONO
 0011   128C           00034         BCF PIR1, RCIF;     LIMPIANDO LA BANDERA DE RECEPCION
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  2
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -97,25 +97,40 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0028   0099           00066         MOVWF TXREG
 0029   2???           00067         CALL TRANSMIT
                       00068         
-002A   2???           00069         CALL RX_CHECK
-                      00070 
-002B                  00071 RX_CHECK:
-002B   1A8C           00072         BTFSC PIR1, RCIF
-002C   2???           00073         CALL RECEIVED
-002D   2???           00074         GOTO RX_CHECK
-002E   0008           00075         RETURN
-002F                  00076 RECEIVED:
-002F   081A           00077         MOVF RCREG,0;       MUEVO EL CONTENIDO DE RCREG A W
-0030   0088           00078         MOVWF PORTD
-0031   128C           00079         BCF PIR1, RCIF;     LIMPIO LA BANDERA DE RECEPCIÓN
-0032   0008           00080         RETURN
-0033                  00081 TRANSMIT:
-0033   1E0C           00082         BTFSS PIR1, TXIF;    VERIFICO QUE EL BUFFER ESTÉ VACIO PARA COMENZAR LA TRANSMISIÓN
-0034   2???           00083         GOTO TRANSMIT
-0035   0008           00084         RETURN
+002A   303A           00069         MOVLW ':'
+002B   0099           00070         MOVWF TXREG
+002C   2???           00071         CALL TRANSMIT
+                      00072 
+002D   3020           00073         MOVLW ' '
+002E   0099           00074         MOVWF TXREG
+002F   2???           00075         CALL TRANSMIT
+                      00076         
+0030   2???           00077         CALL RX_CHECK
+                      00078 
+0031                  00079 RX_CHECK:
+0031   1A8C           00080         BTFSC PIR1, RCIF;   VERIFICO QUE HE RECIBIIDO EL MENSAJE
+0032   2???           00081         CALL RECEIVED
+0033   2???           00082         GOTO RX_CHECK
+0034   0008           00083         RETURN
+0035                  00084 RECEIVED:
+0035   081A           00085         MOVF RCREG,0;       LEO EL DATO Y MUEVO EL CONTENIDO DE RCREG A W
+0036   0088           00086         MOVWF PORTD;        SACO EL DATO EN PANTALLA
+0037   128C           00087         BCF PIR1, RCIF;     LIMPIO LA BANDERA DE RECEPCIÓN PARA RECIBIR UN NUEVO DATO
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0038   0008           00088         RETURN
+0039                  00089 TRANSMIT:
+0039   1E0C           00090         BTFSS PIR1, TXIF;    VERIFICO QUE EL BUFFER ESTÉ VACIO PARA COMENZAR LA TRANSMISIÓN
+003A   2???           00091         GOTO TRANSMIT;      
+003B   120C           00092         BCF PIR1,TXIF;      HAY QUE LIMPIAR LA BANDERA
+003C   0008           00093         RETURN
 Warning[205]: Found directive in column 1. (END)
-3F7A                  00085 END
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  3
+3F7A                  00094 END
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  4
 
 
 SYMBOL TABLE
@@ -174,7 +189,7 @@ CHS1                              00000004
 CHS2                              00000005
 CIS                               00000003
 CKE                               00000006
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  4
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  5
 
 
 SYMBOL TABLE
@@ -233,7 +248,7 @@ INTF                              00000001
 IRP                               00000007
 MAIN                              00000001
 NOT_A                             00000005
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  5
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  6
 
 
 SYMBOL TABLE
@@ -292,7 +307,7 @@ RA5                               00000005
 RB0                               00000000
 RB1                               00000001
 RB2                               00000002
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  6
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  7
 
 
 SYMBOL TABLE
@@ -334,13 +349,13 @@ RE0                               00000000
 RE1                               00000001
 RE2                               00000002
 READ_WRITE                        00000002
-RECEIVED                          0000002F
+RECEIVED                          00000035
 RP0                               00000005
 RP1                               00000006
 RSEN                              00000001
 RX9                               00000006
 RX9D                              00000000
-RX_CHECK                          0000002B
+RX_CHECK                          00000031
 R_NOT_W                           00000002
 R_W                               00000002
 S                                 00000003
@@ -351,7 +366,7 @@ SPEN                              00000007
 SREN                              00000005
 SSPADD                            00000093
 SSPBUF                            00000013
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  7
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  8
 
 
 SYMBOL TABLE
@@ -401,7 +416,7 @@ TOUTPS0                           00000003
 TOUTPS1                           00000004
 TOUTPS2                           00000005
 TOUTPS3                           00000006
-TRANSMIT                          00000033
+TRANSMIT                          00000039
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
@@ -410,7 +425,7 @@ TRISA3                            00000003
 TRISA4                            00000004
 TRISA5                            00000005
 TRISB                             00000086
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  8
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  9
 
 
 SYMBOL TABLE
@@ -469,7 +484,7 @@ _BOREN_OFF                        00003FBF
 _BOREN_ON                         00003FFF
 _CONFIG                           00002007
 _CPD_OFF                          00003FFF
-MPASM 5.86                        SERIAL.ASM   8-1-2020  18:21:49         PAGE  9
+MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE 10
 
 
 SYMBOL TABLE

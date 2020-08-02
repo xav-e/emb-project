@@ -1,11 +1,11 @@
 MPLINK 5.09, LINKER
-Linker Map File - Created Sat Aug 01 18:21:51 2020
+Linker Map File - Created Sun Aug 02 13:45:46 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
-                   .org_0       code   0x000000    program   0x00006c
-                   .cinit    romdata   0x000036    program   0x000004
+                   .org_0       code   0x000000    program   0x00007a
+                   .cinit    romdata   0x00003d    program   0x000004
 .config_2007_BUILD/DEFAULT/PRODUCTION/SERIAL.       code   0x002007    program   0x000002
 
 
@@ -13,9 +13,9 @@ Linker Map File - Created Sat Aug 01 18:21:51 2020
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x000037      
+                            0x000000    0x00003e      
                             0x002007    0x002007      
-            57 out of 8454 program addresses used, program memory utilization is 0%
+            64 out of 8454 program addresses used, program memory utilization is 0%
 
 
 
@@ -23,9 +23,9 @@ Linker Map File - Created Sat Aug 01 18:21:51 2020
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
                      MAIN   0x000001    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
-                 RECEIVED   0x00002f    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
-                 RX_CHECK   0x00002b    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
-                 TRANSMIT   0x000033    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
+                 RECEIVED   0x000035    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
+                 RX_CHECK   0x000031    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
+                 TRANSMIT   0x000039    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
 
 
 
@@ -33,8 +33,8 @@ Linker Map File - Created Sat Aug 01 18:21:51 2020
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
                      MAIN   0x000001    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
-                 RX_CHECK   0x00002b    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
-                 RECEIVED   0x00002f    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
-                 TRANSMIT   0x000033    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
+                 RX_CHECK   0x000031    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
+                 RECEIVED   0x000035    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
+                 TRANSMIT   0x000039    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\SIMULACIÓN\serial.X\serial.asm
 
 

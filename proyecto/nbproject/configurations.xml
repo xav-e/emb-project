@@ -24,6 +24,7 @@
       <itemPath>CIS.asm</itemPath>
       <itemPath>ADC.ASM</itemPath>
       <itemPath>PIC2.asm</itemPath>
+      <itemPath>motor-pwm-AD-Serial.asm</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
