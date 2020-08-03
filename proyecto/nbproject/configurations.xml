@@ -8,7 +8,6 @@
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
-      <itemPath>SAVING STATUS AND W REGISTERS IN RAM.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -27,6 +26,9 @@
       <itemPath>PIC2.asm</itemPath>
       <itemPath>motor-pwm-AD-Serial.asm</itemPath>
       <itemPath>usart lcd serial.asm</itemPath>
+      <itemPath>../PIC16F877A---TUTORIAL--master/musso ejemplos/serial y comparador.asm</itemPath>
+      <itemPath>../../../SAVING STATUS AND W REGISTERS IN RAM.txt</itemPath>
+      <itemPath>../../../SERIAL.txt</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
