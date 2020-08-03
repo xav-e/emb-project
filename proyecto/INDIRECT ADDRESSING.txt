@@ -1,0 +1,13 @@
+/*
+        A simple program to clear RAM locations 20h-2Fh
+        using indirect addressing is shown in Example 2-2.
+*/
+;INDIRECT ADDRESSING
+MOVLW 0x20      ;initialize pointer
+MOVWF FSR       ;to RAM
+NEXT CLRF INDF  ;clear INDF register
+INCF FSR,F      ;inc pointer
+BTFSS FSR,4     ;all done?
+GOTO NEXT       ;no clear next
+CONTINUE
+:               ;yes continue

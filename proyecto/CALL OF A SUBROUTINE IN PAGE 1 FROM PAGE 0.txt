@@ -1,0 +1,24 @@
+/*
+Example 2-1 shows the calling of a subroutine in
+page 1 of the program memory. This example assumes
+that PCLATH is saved and restored by the Interrupt
+Service Routine (if interrupts are used).
+
+*/
+;CALL OF A SUBROUTINE IN PAGE 1 FROM PAGE 0
+ORG 0x500
+BCF PCLATH,4
+BSF PCLATH,3    ;Select page 1
+                ;(800h-FFFh)
+CALL SUB1_P1    ;Call subroutine in
+:               ;page 1 (800h-FFFh)
+:
+ORG 0x900       ;page 1 (800h-FFFh)
+SUB1_P1
+:               ;called subroutine
+                ;page 1 (800h-FFFh)
+:
+RETURN          ;return to
+                ;Call subroutine
+                ;in page 0
+                ;(000h-7FFh)

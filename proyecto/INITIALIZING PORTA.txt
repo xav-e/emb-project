@@ -1,0 +1,15 @@
+BCF STATUS, RP0     ;
+BCF STATUS, RP1     ; Bank0
+CLRF PORTA          ; Initialize PORTA by
+                    ; clearing output
+                    ; data latches
+BSF STATUS, RP0     ; Select Bank 1
+MOVLW 0x06          ; Configure all pins
+MOVWF ADCON1        ; as digital inputs
+MOVLW 0xCF          ; Value used to
+                    ; initialize data
+                    ; direction
+MOVWF TRISA         ; Set RA<3:0> as inputs
+                    ; RA<5:4> as outputs
+                    ; TRISA<7:6>are always
+                    ; read as '0'.

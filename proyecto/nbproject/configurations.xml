@@ -29,7 +29,11 @@
       <itemPath>../PIC16F877A---TUTORIAL--master/musso ejemplos/serial y comparador.asm</itemPath>
       <itemPath>../../../SAVING STATUS AND W REGISTERS IN RAM.txt</itemPath>
       <itemPath>../../../SERIAL.txt</itemPath>
+      <itemPath>Comm S.asm</itemPath>
+      <itemPath>CALL OF A SUBROUTINE IN PAGE 1 FROM PAGE 0.txt</itemPath>
     </logicalFolder>
+    <itemPath>INDIRECT ADDRESSING.txt</itemPath>
+    <itemPath>INITIALIZING PORTA.txt</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
