@@ -1,4 +1,4 @@
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  1
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 000F   3090           00032         MOVLW h'90'
 0010   0098           00033         MOVWF RCSTA;        CONFIGURANDO EL RCSTA PARA ASINCRONO
 0011   128C           00034         BCF PIR1, RCIF;     LIMPIANDO LA BANDERA DE RECEPCION
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  2
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0035   081A           00085         MOVF RCREG,0;       LEO EL DATO Y MUEVO EL CONTENIDO DE RCREG A W
 0036   0088           00086         MOVWF PORTD;        SACO EL DATO EN PANTALLA
 0037   128C           00087         BCF PIR1, RCIF;     LIMPIO LA BANDERA DE RECEPCIÓN PARA RECIBIR UN NUEVO DATO
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  3
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -130,7 +130,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 003C   0008           00093         RETURN
 Warning[205]: Found directive in column 1. (END)
 3F7A                  00094 END
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  4
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  4
 
 
 SYMBOL TABLE
@@ -189,7 +189,7 @@ CHS1                              00000004
 CHS2                              00000005
 CIS                               00000003
 CKE                               00000006
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  5
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  5
 
 
 SYMBOL TABLE
@@ -248,7 +248,7 @@ INTF                              00000001
 IRP                               00000007
 MAIN                              00000001
 NOT_A                             00000005
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  6
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  6
 
 
 SYMBOL TABLE
@@ -307,7 +307,7 @@ RA5                               00000005
 RB0                               00000000
 RB1                               00000001
 RB2                               00000002
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  7
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  7
 
 
 SYMBOL TABLE
@@ -366,7 +366,7 @@ SPEN                              00000007
 SREN                              00000005
 SSPADD                            00000093
 SSPBUF                            00000013
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  8
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  8
 
 
 SYMBOL TABLE
@@ -425,7 +425,7 @@ TRISA3                            00000003
 TRISA4                            00000004
 TRISA5                            00000005
 TRISB                             00000086
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE  9
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE  9
 
 
 SYMBOL TABLE
@@ -484,7 +484,7 @@ _BOREN_OFF                        00003FBF
 _BOREN_ON                         00003FFF
 _CONFIG                           00002007
 _CPD_OFF                          00003FFF
-MPASM 5.86                        SERIAL.ASM   8-2-2020  13:45:45         PAGE 10
+MPASM 5.86                        SERIAL.ASM   8-2-2020  17:14:54         PAGE 10
 
 
 SYMBOL TABLE

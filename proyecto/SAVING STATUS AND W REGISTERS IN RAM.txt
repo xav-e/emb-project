@@ -1,0 +1,57 @@
+SAVING STATUS AND W REGISTERS IN RAM
+Example 6-1 does the following:
+a) Stores the W register.
+b) Stores the STATUS register in STATUS_TEMP.
+c) Executes the Interrupt Service Routine code.
+d) Restores the STATUS (and bank select bit)
+register.
+e) Restores the W register.
+
+CBLOCK;                 Se definen las variables donde se guardarán 
+                       ;los registros 
+W_TEMP 
+STATUS_TEMP 
+R_ContA_TEMP
+R_ContB_TEMP 
+ENDC
+
+;ServicioInterrupcion
+movwf W_TEMP;           Guarda W y STATUS. 
+swapf STATUS,W;         Ya que "movf STATUS,W", corrompe el bit Z. 
+movwf STATUSW_TEMP 
+bcf STATUS,RP0;         Para asegurarse que trabaja con el banco 0.
+movf R_ContA,W;         Guarda los registros utilizados en esta 
+movwf R_ContA_TEMP;     subrutina y también en la principal. 
+movf R_ContB,W
+movwf R_ContB_TEMP
+
+;Acá va la acción que hará cuando aparezca una interrupción
+
+;FinInterrupcion
+swapf STATUS_TEMP,W;    Restaura el STATUS. 
+movwf STATUS
+swapf W_TEMP,F;         Restaura W como estaba antes de producirse 
+swapf W_TEMP,W;         interrupción. 
+movf R_ContA_TEMP,W;    Restaura los registros utilizados en esta 
+movwf R_ContA;          subrutina y también en la principal. 
+movf R_ContB_TEMP,W 
+movwf R_ContB 
+bcf INTCON,INTF;        Limpia flag de reconocimiento de la interrupción. 
+retfie;                 Retorna y rehabilita las interrupciones.
+
+PUSH MOVWF W_TEMP ; Copy W to TEMP register,
+SWAPF STATUS, W ; Swap status to be saved into W
+MOVWF STATUS_TEMP ; Save status to STATUS_TEMP register
+ISR : :
+: ; Interrupt Service Routine
+: ; should configure Bank as required
+: ;
+POP SWAPF STATUS_TEMP,W ; Swap nibbles in STATUS_TEMP register
+; and place result into W
+MOVWF STATUS ; Move W into STATUS register
+; (sets bank to original state)
+SWAPF W_TEMP, F ; Swap nibbles in W_TEMP and place result in W_TEMP
+SWAPF W_TEMP, W ; Swap nibbles in W_TEMP and place result into 
+
+
+

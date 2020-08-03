@@ -8,6 +8,7 @@
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
+      <itemPath>SAVING STATUS AND W REGISTERS IN RAM.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -25,6 +26,7 @@
       <itemPath>ADC.ASM</itemPath>
       <itemPath>PIC2.asm</itemPath>
       <itemPath>motor-pwm-AD-Serial.asm</itemPath>
+      <itemPath>usart lcd serial.asm</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
