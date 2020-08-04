@@ -21,8 +21,6 @@
     </logicalFolder>
     <logicalFolder name="OtherFiles" displayName="Other Files" projectFiles="false">
       <itemPath>PWM.asm</itemPath>
-      <itemPath>CIS.asm</itemPath>
-      <itemPath>ADC.ASM</itemPath>
       <itemPath>PIC2.asm</itemPath>
       <itemPath>motor-pwm-AD-Serial.asm</itemPath>
       <itemPath>usart lcd serial.asm</itemPath>
@@ -31,6 +29,8 @@
       <itemPath>../../../SERIAL.txt</itemPath>
       <itemPath>Comm S.asm</itemPath>
       <itemPath>CALL OF A SUBROUTINE IN PAGE 1 FROM PAGE 0.txt</itemPath>
+      <itemPath>ADC_TINACO.ASM</itemPath>
+      <itemPath>CISTERNA_ADC.asm</itemPath>
     </logicalFolder>
     <itemPath>INDIRECT ADDRESSING.txt</itemPath>
     <itemPath>INITIALIZING PORTA.txt</itemPath>

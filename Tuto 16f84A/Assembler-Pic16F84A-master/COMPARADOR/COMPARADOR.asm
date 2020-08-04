@@ -1,4 +1,6 @@
-;**************** THE WELS THEORY ******************
+/*
+    */
+    ;**************** THE WELS THEORY ******************
 ;Descripción: Se compara un Numero con el puerto A
 ;si PORTA = Numero -> Se encienden todos los LEDS
 ;si PORTA > Numero -> Se encienden los leds pares
