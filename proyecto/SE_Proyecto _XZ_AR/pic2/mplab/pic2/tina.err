@@ -1,0 +1,45 @@
+Warning[205] C:\USERS\XAVIER\DESKTOP\TINA.ASM 1 : Found directive in column 1. (LIST)
+Warning[205] C:\USERS\XAVIER\DESKTOP\TINA.ASM 17 : Found directive in column 1. (CBLOCK)
+Warning[205] C:\USERS\XAVIER\DESKTOP\TINA.ASM 21 : Found directive in column 1. (ENDC)
+Warning[205] C:\USERS\XAVIER\DESKTOP\TINA.ASM 27 : Found directive in column 1. (ORG)
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 36 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 41 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 43 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 55 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 65 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 70 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 77 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\XAVIER\DESKTOP\TINA.ASM 100 : Found opcode in column 1. (RETURN)
+Warning[203] C:\USERS\XAVIER\DESKTOP\TINA.ASM 107 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 153 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 156 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 157 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 160 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 161 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 162 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 163 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 171 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 172 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 175 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 176 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 180 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 181 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 183 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 185 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 189 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 203 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 204 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 346 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 386 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 427 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 430 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 433 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 435 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 461 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 464 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 466 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 468 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 501 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\TINA.ASM 503 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] C:\USERS\XAVIER\DESKTOP\TINA.ASM 513 : Found directive in column 1. (END)

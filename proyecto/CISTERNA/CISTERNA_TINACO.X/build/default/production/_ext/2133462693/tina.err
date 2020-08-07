@@ -1,0 +1,31 @@
+Warning[205] ..\..\PROYECTO\TINA.ASM 4 : Found directive in column 1. (LIST)
+Warning[205] ..\..\PROYECTO\TINA.ASM 18 : Found directive in column 1. (CBLOCK)
+Warning[205] ..\..\PROYECTO\TINA.ASM 22 : Found directive in column 1. (ENDC)
+Message[302] ..\..\PROYECTO\TINA.ASM 39 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 40 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 42 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 44 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 48 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 58 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 59 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 60 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 61 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 62 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 63 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[202] ..\..\PROYECTO\TINA.ASM 75 : Argument out of range.  Least significant bits used.
+Message[302] ..\..\PROYECTO\TINA.ASM 143 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 199 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 212 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] ..\..\PROYECTO\TINA.ASM 226 : Found opcode in column 1. (RETURN)
+Message[302] ..\..\PROYECTO\TINA.ASM 260 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 263 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 266 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 268 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 294 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 297 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 299 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 301 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 334 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\..\PROYECTO\TINA.ASM 336 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] ..\..\PROYECTO\TINA.ASM 346 : Found directive in column 1. (END)
