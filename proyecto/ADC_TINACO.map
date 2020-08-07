@@ -1,0 +1,68 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Tue Aug 04 15:09:33 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x0000a8
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000053      
+            84 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                      ADC   0x00001a    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   AGUAAA   0x000041    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    BANK0   0x000001    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    BANK1   0x000004    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    BOMBA   0x00004e    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+            CISTERNAVACIA   0x000052    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   CUATRO   0x000033    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   INICIO   0x000007    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    LLENO   0x00003f    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   MAYOR4   0x000034    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+               MIRAFLORES   0x000050    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    MITAD   0x000025    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   MLLENO   0x000028    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   MVACIO   0x000043    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   NIVEL1   0x00004d    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   NIVEL2   0x000042    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   NIVEL3   0x000040    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    START   0x000016    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    VACIO   0x00004c    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    BANK0   0x000001    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    BANK1   0x000004    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   INICIO   0x000007    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    START   0x000016    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                      ADC   0x00001a    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    MITAD   0x000025    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   MLLENO   0x000028    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   CUATRO   0x000033    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   MAYOR4   0x000034    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    LLENO   0x00003f    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   NIVEL3   0x000040    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   AGUAAA   0x000041    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   NIVEL2   0x000042    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   MVACIO   0x000043    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    VACIO   0x00004c    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                   NIVEL1   0x00004d    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+                    BOMBA   0x00004e    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+               MIRAFLORES   0x000050    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+            CISTERNAVACIA   0x000052    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\ADC_TINACO.ASM
+
+

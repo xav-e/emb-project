@@ -1,0 +1,132 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Thu Aug 06 22:37:37 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000006
+                   .org_2       code   0x000004    program   0x00021c
+  .config_2007_CISTERNA.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000111      
+                            0x002007    0x002007      
+            274 out of 8454 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+             ABRIRVALVULA   0x0000ae    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                      ADC   0x000076    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   AGUAAA   0x00009b    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              APAGARBOMBA   0x0000b6    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                 BOMBAOFF   0x0000a8    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    BUCLE   0x0000fb    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              BUCLE_milis   0x0000e8    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    Bucle   0x00010d    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            CERRARVALVULA   0x0000b4    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   CUATRO   0x00008c    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             ENCENDEBOMBA   0x0000bb    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    ERR_1   0x000019    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    ERR_2   0x00001e    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   INICIO   0x00003f    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    LLENO   0x000097    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   MANUAL   0x0000c4    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   MAYOR4   0x00008e    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    MITAD   0x000081    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   MLLENO   0x000083    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   MVACIO   0x00009f    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   NIVEL1   0x0000aa    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   NIVEL2   0x00009d    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   NIVEL3   0x000099    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                      OFF   0x00002b    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                       ON   0x000030    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   ON_OFF   0x000025    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                     PLAY   0x00003a    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                  RECIBIR   0x000009    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                  REVISAR   0x000014    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_100us   0x000100    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             Retardo_10us   0x000107    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardo_1ms   0x0000ee    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardo_1us   0x000110    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_200us   0x0000f3    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             Retardo_20ms   0x0000e1    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             Retardo_20us   0x000105    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_300us   0x0000f5    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_400ms   0x0000cc    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_500us   0x0000f7    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             Retardo_50us   0x000103    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardo_5ms   0x0000e3    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardo_5us   0x00010a    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+           Retardo_Micros   0x0000f9    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_Milis   0x0000e6    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+           Retardo_micros   0x00010c    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                 Retardos   0x0000f8    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardos_ms   0x0000e5    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                  SEQUEMO   0x0000ac    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    START   0x000073    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  RECIBIR   0x000009    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                  REVISAR   0x000014    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    ERR_1   0x000019    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    ERR_2   0x00001e    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   ON_OFF   0x000025    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                      OFF   0x00002b    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                       ON   0x000030    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                     PLAY   0x00003a    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   INICIO   0x00003f    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    START   0x000073    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                      ADC   0x000076    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    MITAD   0x000081    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   MLLENO   0x000083    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   CUATRO   0x00008c    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   MAYOR4   0x00008e    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    LLENO   0x000097    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   NIVEL3   0x000099    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   AGUAAA   0x00009b    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   NIVEL2   0x00009d    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   MVACIO   0x00009f    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                 BOMBAOFF   0x0000a8    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   NIVEL1   0x0000aa    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                  SEQUEMO   0x0000ac    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             ABRIRVALVULA   0x0000ae    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            CERRARVALVULA   0x0000b4    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              APAGARBOMBA   0x0000b6    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             ENCENDEBOMBA   0x0000bb    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                   MANUAL   0x0000c4    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_400ms   0x0000cc    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             Retardo_20ms   0x0000e1    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardo_5ms   0x0000e3    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardos_ms   0x0000e5    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_Milis   0x0000e6    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              BUCLE_milis   0x0000e8    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardo_1ms   0x0000ee    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_200us   0x0000f3    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_300us   0x0000f5    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_500us   0x0000f7    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                 Retardos   0x0000f8    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+           Retardo_Micros   0x0000f9    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    BUCLE   0x0000fb    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+            Retardo_100us   0x000100    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             Retardo_50us   0x000103    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             Retardo_20us   0x000105    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+             Retardo_10us   0x000107    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardo_5us   0x00010a    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+           Retardo_micros   0x00010c    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+                    Bucle   0x00010d    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+              Retardo_1us   0x000110    program     static C:\Users\Xavier\Desktop\emb-git\emb-project\proyecto\cisterna.asm
+
+

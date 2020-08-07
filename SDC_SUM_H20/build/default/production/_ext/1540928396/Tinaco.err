@@ -1,0 +1,19 @@
+Warning[205] ..\PROYECTO\TINACO.ASM 1 : Found directive in column 1. (LIST)
+Message[302] ..\PROYECTO\TINACO.ASM 29 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 30 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 34 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 38 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 47 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 48 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 49 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 50 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 51 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 52 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[202] ..\PROYECTO\TINACO.ASM 64 : Argument out of range.  Least significant bits used.
+Message[302] ..\PROYECTO\TINACO.ASM 131 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 187 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\TINACO.ASM 200 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] ..\PROYECTO\TINACO.ASM 214 : Found opcode in column 1. (RETURN)
+Warning[205] ..\PROYECTO\TINACO.ASM 217 : Found directive in column 1. (END)

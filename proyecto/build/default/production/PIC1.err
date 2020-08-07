@@ -1,0 +1,15 @@
+Warning[205] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 1 : Found directive in column 1. (LIST)
+Warning[205] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 15 : Found directive in column 1. (ORG)
+Warning[203] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 16 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 17 : Found opcode in column 1. (GOTO)
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 61 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 74 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 78 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 91 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 95 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 108 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 112 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 125 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 129 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] C:\USERS\XAVIER\DESKTOP\EMB-GIT\EMB-PROJECT\PROYECTO\PIC1.ASM 173 : Found directive in column 1. (END)

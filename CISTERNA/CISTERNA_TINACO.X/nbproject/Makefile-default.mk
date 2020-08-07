@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../../proyecto/tina.asm ../../proyecto/cist.asm
+SOURCEFILES_QUOTED_IF_SPACED=../../proyecto/cist.asm ../../proyecto/tina.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/2133462693/tina.o ${OBJECTDIR}/_ext/2133462693/cist.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/2133462693/tina.o.d ${OBJECTDIR}/_ext/2133462693/cist.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/2133462693/cist.o ${OBJECTDIR}/_ext/2133462693/tina.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/2133462693/cist.o.d ${OBJECTDIR}/_ext/2133462693/tina.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/2133462693/tina.o ${OBJECTDIR}/_ext/2133462693/cist.o
+OBJECTFILES=${OBJECTDIR}/_ext/2133462693/cist.o ${OBJECTDIR}/_ext/2133462693/tina.o
 
 # Source Files
-SOURCEFILES=../../proyecto/tina.asm ../../proyecto/cist.asm
+SOURCEFILES=../../proyecto/cist.asm ../../proyecto/tina.asm
 
 
 
@@ -95,14 +95,6 @@ MP_LINKER_DEBUG_OPTION=
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/2133462693/tina.o: ../../proyecto/tina.asm  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/2133462693" 
-	@${RM} ${OBJECTDIR}/_ext/2133462693/tina.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2133462693/tina.o 
-	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/2133462693/tina.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -d__DEBUG -d__MPLAB_DEBUGGER_SIMULATOR=1 -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/_ext/2133462693/tina.lst\" -e\"${OBJECTDIR}/_ext/2133462693/tina.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/_ext/2133462693/tina.o\" \"../../proyecto/tina.asm\" 
-	@${DEP_GEN} -d "${OBJECTDIR}/_ext/2133462693/tina.o"
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2133462693/tina.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
-	
 ${OBJECTDIR}/_ext/2133462693/cist.o: ../../proyecto/cist.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2133462693" 
 	@${RM} ${OBJECTDIR}/_ext/2133462693/cist.o.d 
@@ -111,15 +103,15 @@ ${OBJECTDIR}/_ext/2133462693/cist.o: ../../proyecto/cist.asm  nbproject/Makefile
 	@${DEP_GEN} -d "${OBJECTDIR}/_ext/2133462693/cist.o"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/2133462693/cist.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
-else
 ${OBJECTDIR}/_ext/2133462693/tina.o: ../../proyecto/tina.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2133462693" 
 	@${RM} ${OBJECTDIR}/_ext/2133462693/tina.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2133462693/tina.o 
-	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/2133462693/tina.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/_ext/2133462693/tina.lst\" -e\"${OBJECTDIR}/_ext/2133462693/tina.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/_ext/2133462693/tina.o\" \"../../proyecto/tina.asm\" 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/2133462693/tina.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -d__DEBUG -d__MPLAB_DEBUGGER_SIMULATOR=1 -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/_ext/2133462693/tina.lst\" -e\"${OBJECTDIR}/_ext/2133462693/tina.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/_ext/2133462693/tina.o\" \"../../proyecto/tina.asm\" 
 	@${DEP_GEN} -d "${OBJECTDIR}/_ext/2133462693/tina.o"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/2133462693/tina.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
+else
 ${OBJECTDIR}/_ext/2133462693/cist.o: ../../proyecto/cist.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2133462693" 
 	@${RM} ${OBJECTDIR}/_ext/2133462693/cist.o.d 
@@ -127,6 +119,14 @@ ${OBJECTDIR}/_ext/2133462693/cist.o: ../../proyecto/cist.asm  nbproject/Makefile
 	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/2133462693/cist.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/_ext/2133462693/cist.lst\" -e\"${OBJECTDIR}/_ext/2133462693/cist.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/_ext/2133462693/cist.o\" \"../../proyecto/cist.asm\" 
 	@${DEP_GEN} -d "${OBJECTDIR}/_ext/2133462693/cist.o"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/2133462693/cist.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
+	
+${OBJECTDIR}/_ext/2133462693/tina.o: ../../proyecto/tina.asm  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/2133462693" 
+	@${RM} ${OBJECTDIR}/_ext/2133462693/tina.o.d 
+	@${RM} ${OBJECTDIR}/_ext/2133462693/tina.o 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/2133462693/tina.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/_ext/2133462693/tina.lst\" -e\"${OBJECTDIR}/_ext/2133462693/tina.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/_ext/2133462693/tina.o\" \"../../proyecto/tina.asm\" 
+	@${DEP_GEN} -d "${OBJECTDIR}/_ext/2133462693/tina.o"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2133462693/tina.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
 endif
 

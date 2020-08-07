@@ -1,0 +1,36 @@
+_RETURN_
+CCP_1
+CCP_1_LOW
+CCP_1_HIGH
+CCP_2
+CCP_2_LOW
+CCP_2_HIGH
+PSP_DATA
+C1OUT
+C2OUT
+
+Project Directory:
+    C:\Users\ELIAS\Documents\PIC18F4550\
+
+Project Files:
+    main.c                                                  [15-may-14 14:02  CRC=3EA83D93]
+    ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [03-jul-13 14:29  CRC=A157EDDE]
+
+Source signature=8158194F
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Output file:    Relocatable
+
+Output Files:
+    Errors:      main.err
+    Object:      main.o
+    Symbols:     main.osym

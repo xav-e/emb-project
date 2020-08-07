@@ -1,0 +1,1154 @@
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (LIST)
+                      00001 LIST P=16f877a;     INDICANDO PROCESADOR
+                      00002 ;INCLUYENDO LAS LIBRERIA QUE VAMOS A UTILIZAR
+                      00003     #include "p16f877a.inc"    
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F877A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00566         LIST
+                      00004 
+                      00005 ; CONFIG. DEL CLOCK A 20MHZ, WATCHDOG DESHABILITADO Y POWER-UP TIMER ON
+2007   3F72           00006     __CONFIG _FOSC_HS & _WDTE_OFF & _PWRTE_ON & _BOREN_ON & _LVP_OFF & _CPD_OFF & _WRT_OFF & _CP_OFF
+                      00007 
+                      00008 ;* DEFINICION DE VARIABLES Y SU ALMACENAMIENTO
+                      00009 ;*
+                      00010     CBLOCK 0xA0
+  000000A0            00011         SMS;            VARIABLE 0
+  000000A1            00012         SMS_ERR_STATUS  ; VARIABLE 1
+  000000A2            00013         SMS_FERR        ; VARIABLE 2
+  000000A3            00014         SMS_OERR        ; VARIABLE 3
+  000000A4            00015         NIVEL_TINACO    ;
+                      00016     ENDC
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00017 CBLOCK 0xA7
+  000000A7            00018  CUENTA
+  000000A8            00019  CUENTA_2
+                      00020  
+Warning[205]: Found directive in column 1. (ENDC)
+                      00021 ENDC
+                      00022  
+0000                  00023     ORG 0X00
+0000   1303           00024     BCF STATUS,RP1;                             CAMBIO DE BANCO
+0001   1283           00025     BCF STATUS,RP0;BANCO 0
+0002   283F           00026     GOTO        INICIO
+Warning[205]: Found directive in column 1. (ORG)
+0004                  00027 ORG 0X04
+0004   1303           00028     BCF STATUS,RP1;                             CAMBIO DE BANCO
+0005   1283           00029     BCF STATUS,RP0;BANCO 0
+0006   1A8C           00030     BTFSC PIR1, RCIF;      SI HAY MENSAJE VERIFICO QUE PASO PRIMERO
+0007   2009           00031     CALL RECIBIR;           SI NO HAY MENSAJE PREGUNTO SI ESTA ACTIVADO MODO MANUAL 
+0008   0009           00032     RETFIE
+                      00033     
+0009                  00034 RECIBIR:
+0009   0180           00035     CLRF W; LIMPIO PARA SABER EL TIPO DE ERROR AL SALIR DEL CICLO, SI W SALE CON 0 DE AQUI, TODO OK
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000A   01A1           00036     CLRF SMS_ERR_STATUS;    LIMPIO EL ERROR QUE HUBO POR SI OCURRE OTRO, LLEVO CONTROL
+000B   1E8C           00037     BTFSS PIR1, RCIF;       ESPERO A QUE SE CARGUE EL RCREG, SI MANEJO INT OMITO ESTA PREGUNT A MENOS QU
+                            E HAYA OTRA INTERRUPCION ENTONCES TENGO QUE HACER POLLIN PARA SABER CUAL FLAG SE LEVANTO
+000C   2809           00038     GOTO RECIBIR;           POR SI CAMBIO EL MENSAJE DESDE QUE ENTRE AQUI, ESPERO A TENER EL MENSAJE MAS
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                             NUEVO
+000D   2014           00039     CALL REVISAR;           MENSAJE EN RCREG, CHEQUEO ERRORES EN LA TRANSMISION
+000E   0818           00040     MOVF RCSTA, W;          LEO EL ESTATUS DE LOS ERRORES ANTES QUE SE BORREN
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000F   00A1           00041     MOVWF SMS_ERR_STATUS;   LOS GUARDO EN UN REGISTRO TEMPORAL
+0010   081A           00042     MOVF RCREG, W;          LEO EL MENSAJE RECIBIDO SIN ERRORES 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0011   00A0           00043     MOVWF SMS;              Y LO PASO A UN REGISTRO TEMPORAL
+0012   2025           00044     CALL ON_OFF
+0013   0008           00045     RETURN
+0014                  00046 REVISAR:
+0014   1918           00047     BTFSC RCSTA, FERR;      VERIFICO SI HUBO ERROR DE FERR, 
+0015   2819           00048     GOTO ERR_1;             LEYO MAL EL BIT DE PARADA, LO LEYO COMO 0
+0016   1898           00049     BTFSC RCSTA, OERR;      VERIFICO SI HUBO ERROR DE OERR
+0017   281E           00050     GOTO ERR_2;             LEYO MAL UN BIT, NO CARGO COMPLETO 
+0018   0008           00051     RETURN; SIN ERRORES PUEDO LEER
+                      00052     
+0019                  00053 ERR_1:
+0019   0818           00054     MOVF RCSTA, W
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001A   00A1           00055     MOVWF SMS_ERR_STATUS;   LEO LOS ERRORES Y LOS GUARDO
+001B   081A           00056     MOVF RCREG, W;          LIMPIO EL BUFFER PARA LEER UN NUEVO MENSAJE LIMPIA RCREG, RCIF = 0, LIMPIA E
+                            L FERR, LEE RX9D
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001C   00A2           00057     MOVWF SMS_FERR;         MENSAJE MAS ABAJO
+001D   2809           00058     GOTO RECIBIR;           RECIBE OTRA VEZ QUE VINO EL MENSAJE MALO
+                      00059     ;/* GUARDO EL MENSAJE CON EL ERROR PARA COMPARAR
+                      00060     ;/*O LLEVAR REGISTRO DE SI HUBO ERRORES EN LA RECEPCION ;PODRIA RETORNAR NORMAL, SI ACTIVO LA INTERR
+                            UPCION PORQUE AL LEER EL RCREG, 
+                      00061     ;/* ESTOY LIMPIANDO LA BANDERA Y VOLVERIA A ESPERAR QUE SE CARGUE EL MENSAJE PARA RETORNAR */
+                      00062     
+001E                  00063 ERR_2:
+001E   0818           00064     MOVF RCSTA, W
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001F   00A1           00065     MOVWF SMS_ERR_STATUS;   LEO LOS ERRORES Y LOS GUARDO
+0020   081A           00066     MOVF RCREG, W;          LEO RX9D, LIMPIO EL RCREG Y EL FERR PARA RECIBIR UN NUEVO MENSAJE
+                      00067     
+                      00068 ; CREO QUE LEE EL MENSAJE ANTERIOR O LEE CERO, SI LO CARGA MAL LO QUE ESTA RSR SE BORRA
+                      00069 ;PERO BLOQUEA LA RECEPCION!!! HAY QUE ESTAR PILA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0021   00A3           00070     MOVWF SMS_OERR;         GUARDO EL MENSAJE MALO PARA COMPARAR CON LOS BUENOS
+0022   1218           00071     BCF RCSTA,CREN;         LIMPIO EL ERROR
+0023   1618           00072     BSF RCSTA,CREN;         LIMPIO EL ERROR
+0024   2809           00073     GOTO RECIBIR;           VUELVE A RECIBIR QUE EL MENSAJE VINO MALO
+                      00074 
+0025                  00075 ON_OFF:
+0025   3001           00076     MOVLW 0X01; 'ON'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0026   0520           00077     ANDWF SMS, W
+0027   1C00           00078     BTFSS W,0
+0028   282B           00079     GOTO OFF
+0029   2030           00080     CALL ON
+002A   0008           00081     RETURN
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00082     
+002B                  00083 OFF:
+002B   1197           00084                 BCF             CCP1CON,3               ; PWM MODE DISABLED
+002C   1117           00085                 BCF             CCP1CON,2
+002D   1097           00086                 BCF             CCP1CON,1
+002E   1017           00087                 BCF             CCP1CON,0                                               
+002F   0008           00088                 RETURN
+0030                  00089 ON:
+                      00090                                                                 ;SE SUPONE QUE ACA SOLO VENGO POR ORDEN 
+                            DEL TINACO PERO DEBEMOS CHEQUEAR EL NIVEL PRIMERO
+0030   1103           00091                 BCF     STATUS,Z
+0031   1003           00092                 BCF     STATUS,C;               NO SE SI ESTAS BANDERAS TAMBIEN HAY QUE LIMPIARLAS PERO 
+                            PORSIA
+0032   081E           00093                 MOVF    ADRESH,W;       NIVEL DEL TANQUE
+0033   3C33           00094                 SUBLW   D'51';                  TESTEAR CON 1 VOLTIO
+0034   1903           00095                 BTFSC   STATUS,Z
+0035   282B           00096                 GOTO    OFF;    1 VOLTIO DE NIVEL
+0036   1C03           00097                 BTFSS   STATUS,C
+0037   283A           00098                 GOTO    PLAY;                   NIVEL > 1 VOLTIO
+0038   202B           00099                 CALL    OFF;    NIVEL <1 VOLTIO
+Warning[203]: Found opcode in column 1. (RETURN)
+0039   0008           00100 RETURN;REVISAR QUE TE DEVUELVES AQUI Y QUE NO HAY REDUNDANCIA
+                      00101 
+003A                  00102 PLAY:
+003A   1597           00103                 BSF             CCP1CON,3               ; PWM MODE ON
+003B   1517           00104                 BSF             CCP1CON,2
+003C   1497           00105                 BSF             CCP1CON,1
+003D   1417           00106                 BSF             CCP1CON,0                       
+Warning[203]: Found opcode in column 1. (RETURN)
+003E   0008           00107 RETURN
+                      00108     
+                      00109     ;MANUAL:
+                      00110     ;AQUI DEBERIA REVISAR EL NIVEL DEL AGUA EN EL TINACO, PERO TENGO QUE HACERLO AQUI MISMO
+                      00111     ;SINO ME QUEDO EN LA INTERRUPCION PARA SIEMPRE, SERIA BUENO TENER LA INFO DEL NIVEL A LA MANO
+                      00112     ;TIPO PARA NO SALIR DE ESTA RUTINA Y SOLO TRANSMITIR
+                      00113     ; AQUI DEBERIA DESBLOQUEAR LA BOMBA PARA QUE LA PRENDAN AFUERA
+                      00114     ;ESCENARIOS:
+                      00115     ;SI ESTA LLENO EL TINACO TENGO QUE APAGAR PARA QUE NO SE BOTE EL AGUA
+                      00116     ;VE
+                      00117     
+                      00118 ;PREGUNTO     
+                      00119     
+                      00120     ;SI NO HAY AGUA EN LA CISTERNA TENGO TRANSMITIR
+                      00121 
+                      00122     ;ACA VA LO DEMAS
+                      00123     
+                      00124     ; SI SE LLENO EL TINACO CUANDO VUELVA A ENTRAR AL CICLO CUMPLE LA CONDICION DE SALIDA Y 
+                      00125     ;SALE PERO MIENTRAS ESTE EL SWITCHE ENCENDIDO, ESTO SE REPITE HASTA QUE PASEMOS EL SWITCHE
+                      00126     ;CONDICION DE SALIDA AQUI ABAJO
+                      00127     ;MOVLW 0X10; 'MANUAL'
+                      00128     ;ANDWF SMS, W
+                      00129     ;BTFSC W,4
+                      00130     ;RETFIE; MANUAL ON, SALGO DE RUTINA SIN LIMPIAR LA BANDERA, PERO PRIMERO RECIBO EL MENSAJE PARA SALI
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                            R
+                      00131     ;BCF INTCON, INTF; LIMPIO LA BANDERA PARA SALIR DEL MODO MANUAL, OFF
+                      00132     ;RETURN
+                      00133 
+003F                  00134 INICIO:                                         
+                      00135 ;/*******************************************************************************
+                      00136 ;**********************  CISTERNA Y PWM ***********************************************/
+                      00137 ;   PR2 = 155
+                      00138 ;   CCPR1L = 00111110
+                      00139 ;   CCPCON1 = 10
+                      00140 ;   CCP1CON -> SALIDA RC2
+                      00141 ;   PRESCALER = 4
+                      00142 ;   TMR2 ON
+                      00143 ;   CCP1 = PWM OPERACION
+                      00144 ;       PERIODO PWM 100MICROSEGUNDOS
+003F   0185           00145                 CLRF PORTA
+0040   0186           00146                 CLRF PORTB
+0041   0187           00147                 CLRF PORTC
+0042   0188           00148                 CLRF PORTD
+0043   0189           00149                 CLRF PORTE; LIMPIO LOS PUERTOS
+0044   1303           00150                 BCF STATUS,RP1;
+0045   1683           00151                 BSF STATUS,RP0;         CAMBIO DE BANCO
+                      00152                                                                 ;BANCO 1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0046   1106           00153                 BCF TRISB, 2
+                      00154 ;CISTERNA
+0047   302F           00155                 MOVLW   d'47'                   ; 00101111B CONFIG PUERTO A CON 5 ENTRADAS Y UNA SALIDA(
+                            RA4)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0048   0085           00156                 MOVWF   TRISA                   ;RA0:RA3,RA5 -> ENTRADAS
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0049   1305           00157                 BCF TRISA,6
+                      00158                                                                 ;CONFIGURACION DE LOS PINES DEL CONVERTI
+                            DOR A/D, AFECTA 8 PINES
+                      00159                                                                 ;RA0-RA5 Y RE0-RE2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+004A   119F           00160                 BCF             ADCON1,PCFG3    ;PCFG3:PCFG0 (ADCON1<3:0>)      
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+004B   111F           00161                 BCF             ADCON1,PCFG2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+004C   149F           00162                 BSF             ADCON1,PCFG1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+004D   101F           00163                 BCF             ADCON1,PCFG0    ;0010 -> 5 INPUTS A Y 3 I/O DIGITALES
+                      00164 ;       /*
+                      00165             ;RA0 = AN0 -> INPUT NO INV COMPARADOR A 1
+                      00166             ;RA1 = AN1 -> INPUT NO INV COMPARADOR A 2
+                      00167             ;RA2 = AN2 -> SOBREESCRITO AL USAR EL COMPARADOR? I/O DIGITAL, NON-USED
+                      00168             ;RA3 = AN3 -> INPUT INV COMPARADOR A 1 Y 2, REFERENCIA COMUN
+                      00169             ;RA5 = AN4 -> INPUT CONVERTIDOR A/D -> CANAL
+                      00170 ;*/
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+004E   171F           00171                 BSF             ADCON1,6;       SELECCION DEL BIT DE CONVERSION 2 DEL CLOCK: FOSC/64
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+004F   139F           00172                 BCF             ADCON1,7;       JUSTIFICADO A LA IZQ, ENMASCARA BITS <1:0 LOS PASOS DEBE
+                            RIAN SER MULTIPLOS DE CUATRO PARA QUE LOS AGARRE???
+                      00173 ;CONVERTIDOR ANALOGICO
+0050   3002           00174                 MOVLW 0X02
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0051   009C           00175                 MOVWF CMCON
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0052   161C           00176                 BSF CMCON, 4;   
+                      00177 
+                      00178 ;SERIAL
+                      00179         
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0053   1307           00180                 BCF TRISC,6;        TX PIN COMO SALIDA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0054   1787           00181                 BSF TRISC,7;        RX PIN COMO INPUT
+0055   3081           00182                 MOVLW h'81';        X=129
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0056   0099           00183                 MOVWF SPBRG;        CONFIGURANDO EL BAUD RATE A 9600 BAUD/S CON EL CLOCK DE 20MHZ
+0057   3026           00184                 MOVLW h'26';        TXEN=1, BRGH=1, TRMT=1, ESTE ES READ ONLY, PERO AJA, SIN PARIDAD
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0058   0098           00185                 MOVWF TXSTA;        CONFIGURANDO TXSTA COMO ASINCRONO
+                      00186 
+0059   30C0           00187                 MOVLW h'C0'
+005A   008B           00188                 MOVWF INTCON; HABILITANDO GIE Y PEIE, esto tampoco hace nada
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+005B   168C           00189                 BSF PIE1,RCIE
+005C   1303           00190                 BCF STATUS, RP1
+005D   1283           00191                 BCF STATUS, RP0;    CAMBIO A BANCO 0
+                      00192 
+005E   3090           00193                 MOVLW h'90'
+005F   0098           00194                 MOVWF RCSTA;        CONFIGURANDO EL RCSTA PARA ASINCRONO
+0060   128C           00195                 BCF PIR1, RCIF;     LIMPIANDO LA BANDERA DE RECEPCION, no hace nada
+                      00196                 
+                      00197                 
+                      00198                                                                 
+0061   1283           00199                 BCF             STATUS,RP0
+0062   1303           00200                 BCF             STATUS,RP1
+                      00201 ;PWM
+0063   309B           00202                 MOVLW   D'155'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0064   0092           00203                 MOVWF   PR2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0065   1107           00204                 BCF             TRISC,2         ;RC2
+                      00205                                                                 ;BANCO 0
+                      00206 ;CISTERNA
+0066   179F           00207                 BSF             ADCON0,ADCS1;   CONVERSION DEL RELOJ
+0067   131F           00208                 BCF             ADCON0,ADCS0;   FOSC/64
+0068   169F           00209                 BSF             ADCON0,CHS2;    SELECCION DEL CANAL ANALOGICO
+0069   121F           00210                 BCF             ADCON0,CHS1
+006A   119F           00211                 BCF             ADCON0,CHS0;    CANAL AN4
+006B   141F           00212                 BSF             ADCON0,0;       ADC ON
+                      00213                 
+                      00214 ;PWM
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+006C   303E           00215                 MOVLW   B'00111110' ;50%DUTYCYCLE
+006D   0095           00216                 MOVWF   CCPR1L
+006E   1697           00217                 BSF             CCP1CON,5       ; 1 
+006F   1217           00218                 BCF             CCP1CON,4       ; 0
+0070   1092           00219                 BCF             T2CON,1         ;4 PRESCALER
+0071   1412           00220                 BSF             T2CON,0
+0072   1512           00221                 BSF             T2CON,2         ; TMR2 ON
+                      00222                 
+                      00223 
+0073                  00224 START:
+0073   20CC           00225                 CALL Retardo_400ms
+0074   151F           00226                 BSF             ADCON0,2                ;       GO/!DONE -> 1
+0075   20CC           00227                 CALL Retardo_400ms
+0076                  00228 ADC:
+0076   191F           00229                 BTFSC   ADCON0,2
+0077   2876           00230                 GOTO    ADC;                    MIENTRAS CONVERTIMOS
+0078   1103           00231                 BCF             STATUS,Z
+0079   1003           00232                 BCF             STATUS,C
+007A   081E           00233                 MOVF    ADRESH,W;               NIVEL DEL TANQUE
+007B   3C80           00234                 SUBLW   D'128';                 TESTEAR CON LA MIT
+007C   1903           00235                 BTFSC   STATUS,Z
+007D   2881           00236                 GOTO    MITAD;                  2.5 VOLTIOS DE NIVEL
+007E   1C03           00237                 BTFSS   STATUS,C
+007F   2883           00238                 GOTO    MLLENO;                 NIVEL > 2.5 VOLTIOS
+0080   289F           00239                 GOTO    MVACIO;                 NIVEL < 2.5 VOLTIOS
+                      00240 
+                      00241 
+0081                  00242 MITAD:                                                  
+0081   20AE           00243                 CALL    ABRIRVALVULA
+                      00244                 ;BTFSS          ;C10OU                          ;TESTEAMOS EL ESTADO DE LA VALVULA
+                      00245                 ;GOTO   MITAD
+0082   2873           00246                 GOTO    START;                  
+                      00247 
+                      00248 
+0083                  00249 MLLENO: 
+0083   1103           00250                 BCF             STATUS,Z
+0084   1003           00251                 BCF             STATUS,C;               NO SE SI ESTAS BANDERAS TAMBIEN HAY QUE LIMPIARL
+                            AS PERO PORSIA, SI SI HAY QUE LIMPIARLAS CRACK!
+0085   081E           00252                 MOVF    ADRESH,W;               NIVEL DEL TANQUE
+0086   3CCD           00253                 SUBLW   D'205';                 TESTEAR CON 4 VOLTIOS
+0087   1903           00254                 BTFSC   STATUS,Z
+0088   288C           00255                 GOTO    CUATRO;                 4 VOLTIOS DE NIVEL
+0089   1C03           00256                 BTFSS   STATUS,C        
+008A   288E           00257                 GOTO    MAYOR4;                 NIVEL > 4 VOLTIOS
+008B   289D           00258                 GOTO    NIVEL2;                 NIVEL < 4 VOLTIOS
+                      00259 
+                      00260                 
+008C                  00261 CUATRO: 
+008C   20AE           00262                 CALL    ABRIRVALVULA    ;ACA SIEMPRE ESATAREMOS LLENANDO MIENTRAS HAYA AGUA A EXCEPCION 
+                            DE QUE ESTEMOS FULLS
+                      00263                                                                 ;NO COMO EN EL TINACO QUE SI HAY QUE RES
+                            PETAR LA CONDICION DE LOS 4 VOLTIOS
+                      00264                 ;BTFSS                                          ;TESTEAMOS ESTADO DE LA VALVULA
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00265                 ;GOTO   CUATRO
+008D   2873           00266                 GOTO    START; 
+                      00267 
+                      00268                 
+008E                  00269 MAYOR4:
+008E   1103           00270                 BCF             STATUS,Z
+008F   1003           00271                 BCF             STATUS,C;               NO SE SI ESTAS BANDERAS TAMBIEN HAY QUE LIMPIARL
+                            AS PERO PORSIA
+0090   081E           00272                 MOVF    ADRESH,W;               NIVEL DEL TANQUE
+0091   3CFF           00273                 SUBLW   D'255';                 TESTEAR CON 5 VOLTIOS
+0092   1903           00274                 BTFSC   STATUS,Z
+0093   2897           00275                 GOTO    LLENO;                  5 VOLTIOS DE NIVEL
+0094   1C03           00276                 BTFSS   STATUS,C
+0095   289B           00277                 GOTO    AGUAAA;                 NIVEL > 5 VOLTIOS
+0096   2899           00278                 GOTO    NIVEL3;                 NIVEL < 5 VOLTIOS
+                      00279         
+                      00280 
+0097                  00281 LLENO:
+0097   20B4           00282         CALL    CERRARVALVULA   ;DE MADRUGADA Y SI ACASO PQ AJA
+                      00283                                                                 ;CASO MUY RARO DE ESTAR FULLS DE AGUA EN
+                             TODOS LADOS
+                      00284                 ;BTFSC;                   ;COMPROBAMOS QUE ESTA CERRADA
+                      00285        ; GOTO    LLENO
+0098   2873           00286                 GOTO    START                           
+                      00287 
+                      00288 
+0099                  00289 NIVEL3:
+0099   20AE           00290                 CALL    ABRIRVALVULA    ; NIVEL 3
+                      00291                 ;BTFSS                                          ;TESTEAMOS ESTADO DE LA VALVULA
+                      00292                 ;GOTO   NIVEL3
+009A   2873           00293                 GOTO    START                                           
+                      00294 
+                      00295 
+009B                  00296 AGUAAA:
+009B   20B4           00297                 CALL    CERRARVALVULA   ;DESPIERTA ESTO ES VENEZUELA
+                      00298                 ;BTFSC                                  ;ESTE CASO SOLO LO ESTARIAMOS MANEJANDO PARA EL 
+                            SUPUESTO ERROR DE
+                      00299                 ;GOTO   AGUAAA                  ;TENER AGUA DE MAS Y SIMPLEMENTE CERRAMOS LA VALVULA COM
+                            O EL LLENO
+009C   2873           00300                 GOTO    START
+                      00301 
+                      00302 
+009D                  00303 NIVEL2:
+009D   20AE           00304                 CALL    ABRIRVALVULA    ;NIVEL 2
+                      00305                 ;BTFSS                                  ;TESTEAMOS ESTADO DE LA VALVULA
+                      00306                 ;GOTO   NIVEL2                                  
+009E   2873           00307                 GOTO    START   
+                      00308 
+                      00309 
+009F                  00310 MVACIO: 
+009F   1103           00311                 BCF             STATUS,Z
+00A0   1003           00312                 BCF             STATUS,C;                NO SE SI ESTAS BANDERAS TAMBIEN HAY QUE LIMPIAR
+                            LAS PERO PORSIA
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A1   081E           00313                 MOVF    ADRESH,W;       NIVEL DEL TANQUE
+00A2   3C33           00314                 SUBLW   D'51';                  TESTEAR CON 1 VOLTIO
+00A3   1903           00315                 BTFSC   STATUS,Z
+00A4   28A8           00316                 GOTO    BOMBAOFF;               1 VOLTIO DE NIVEL
+00A5   1C03           00317                 BTFSS   STATUS,C
+00A6   28AA           00318                 GOTO    NIVEL1;                 NIVEL > 1 VOLTIO
+00A7   28AC           00319                 GOTO    SEQUEMO;        NIVEL <1 VOLTIO
+                      00320 
+                      00321 
+00A8                  00322 BOMBAOFF:
+00A8   20B6           00323                 CALL    APAGARBOMBA
+                      00324                 ;AND MENSAJE LEER Y COM[ARAR                                            ;NO VEO OTRA MAN
+                            ERA DE HACER ESTO DISTINTA A DESHABILITAR EL MODULO
+                      00325                                                                 ;Y POR ENDE NO TENGO NADA QUE TESTEAR PA
+                            RA QUE SI HAYA ESTA APAGADA
+                      00326                                                                 ;NO LA SIGA REAPAGANDO HASTA QUE EL NIVE
+                            L DEL AGUA SUBA
+00A9   2873           00327                 GOTO    START
+                      00328 
+00AA                  00329 NIVEL1:
+00AA   20AE           00330         CALL    ABRIRVALVULA    ;NIVEL 1
+                      00331                 ;BTFSS                                  ;TESTEAMOS ESTADO DE LA VALVULA
+                      00332                 ;GOTO   NIVEL1
+00AB   2873           00333                 GOTO    START
+                      00334 
+                      00335 
+00AC                  00336 SEQUEMO:
+00AC   20B6           00337                 CALL    APAGARBOMBA             ; MISMO CASO DE CUANDO HAY MAS DE 5V DE AGUA
+                      00338                                                                 ; PREVENCION Y MISMA RESOLUCION POR POSI
+                            BLES ERRORES
+00AD   2873           00339                 GOTO    START
+                      00340 
+00AE                  00341 ABRIRVALVULA                                    ;-----------------ESTOY TOMANDO EN CUANTA QUE LA VALVULA
+                             ABIERTA ES 1 Y CERRADA 0-----------------------
+00AE   1303           00342                 BCF STATUS, RP1 
+00AF   1683           00343                 BSF STATUS, RP0                                         ;-----------------IGUAL DE SER A
+                            L REVES SIMPLEMENTE HAY QUE INVERTIR LOS BTFSC Y BTFSS------------------
+                      00344                                                         ;-----------------IGUAL DE SER AL REVES SIMPLEME
+                            NTE HAY QUE INVERTIR LOS BTFSC Y BTFSS------------------
+                      00345                                                                 ;-----------------PERO PARA QUE ENTIENDA
+                            S LA LOGICA IGUAL CON LA PRESION 1 HAY 0 NO HAY-----------------
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00B0   1F1C           00346                 BTFSS  CMCON, C1OUT;TESTEO LA PRESION DEL AGUA CON C1OUT O EL QUE TENGA QUE SER
+00B1   20C4           00347                 CALL    MANUAL
+                      00348                 ;BTFSS  PORTB,RB2                               ; TESTEO EL ESTADO DE LA VALVULA
+00B2   1506           00349                 BSF     PORTB, RB2                              ;ABRIMOS LA VALVULA
+00B3   0008           00350                 RETURN
+00B4                  00351 CERRARVALVULA
+                      00352                                         ;TESTEAMOS ESTADO DE LA VALVULA
+00B4   1106           00353                 BCF             PORTB, RB2                              ;CERRAMOS LA VALVULA
+                      00354                                                                 ;SOLO CERRAREMOS LA VALVULA ESTANDO LLEN
+                            OS
+                      00355                                                                 ;O SI NOS LLAMA MANUAL  
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00B5   0008           00356                 RETURN
+00B6                  00357 APAGARBOMBA
+00B6   1197           00358                 BCF             CCP1CON,3               ; PWM MODE DISABLED
+00B7   1117           00359                 BCF             CCP1CON,2
+00B8   1097           00360                 BCF             CCP1CON,1
+00B9   1017           00361                 BCF             CCP1CON,0                                               
+00BA   0008           00362                 RETURN
+00BB                  00363 ENCENDEBOMBA
+                      00364                                                                 ;SE SUPONE QUE ACA SOLO VENGO POR ORDEN 
+                            DEL TINACO PERO DEBEMOS CHEQUEAR EL NIVEL PRIMERO
+00BB   1103           00365                 BCF             STATUS,Z
+00BC   1003           00366                 BCF             STATUS,C;               NO SE SI ESTAS BANDERAS TAMBIEN HAY QUE LIMPIARL
+                            AS PERO PORSIA
+00BD   081E           00367                 MOVF    ADRESH,W;       NIVEL DEL TANQUE
+00BE   3C33           00368                 SUBLW   D'51';                  TESTEAR CON 1 VOLTIO
+00BF   1903           00369                 BTFSC   STATUS,Z
+00C0   20B6           00370                 CALL    APAGARBOMBA;    1 VOLTIO DE NIVEL
+00C1   1C03           00371                 BTFSS   STATUS,C
+00C2   283A           00372                 GOTO    PLAY;                   NIVEL > 1 VOLTIO
+00C3   20B6           00373                 CALL    APAGARBOMBA;    NIVEL <1 VOLTIO
+                      00374                 
+                      00375                 ;ESTO NO ME GUSTA NADA PERO BERRO SIGO SIN SABER BIEN COMO SERA EL PROCESO SERIAL
+                      00376                                                                 ;PQ SOLO ESTOY HACIENDO ESTO TIPO QUE AL
+                             RECIBIR LA SENAL DE ENCENDERBOMBA
+                      00377                                                                 ;VENGO ACA Y COMPRUEBO QUE EL NIVEL ES M
+                            AYOR A 1 VOLTIO PARA ENCENDER Y SINO LA APAGO
+                      00378                                                                 ;ASI YA ESTE APAGADA O LE DIGO AL TINACO
+                             QUE NO LA PUEDO PRENDER PERO COMO NO SE SI ESO
+                      00379                                                                 ;SE PUEDE Y ES LO QUE HARIAMOS SI EL NIV
+                            EL ES MENOR O IGUAL A 1 VOLTIO LO PONGO ASI
+                      00380                                                                 ;FEO PERO YA ACA EN EL CODIGO A FALTA DE
+                             MODIFICARLO PUES, SE QUE NO ESTA BIEN PERO YA LO
+                      00381                                                                 ;ACOMODAREMOS ACOPLANDO LA COMUNICACION
+00C4                  00382 MANUAL  
+00C4   20B4           00383                 CALL    CERRARVALVULA   ;CAEMOS AQUI SE SUPONE QUE PQ NO HAY PRESION COMO YA SABEMOS
+00C5   1303           00384                 BCF     STATUS, RP1     
+00C6   1683           00385                 BSF     STATUS, RP0                                             
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00C7   1F1C           00386                 BTFSS   CMCON, C1OUT                            ;TESTEAMOS LA PRESION
+00C8   28C4           00387                 GOTO    MANUAL                  ;SEGUN MI LOGICA FUNCIONA AL PELO ESTA MANERA SOLO FALTA
+                             INGENIARSE COMO
+                      00388                                                                 ;HACER QUE SIGA CUMPLIENDO CON LOS REQUE
+                            RIMIENTOS DEL TINACO PERO ESO
+00C9   1303           00389                 BCF STATUS, RP1 
+00CA   1283           00390                 BCF STATUS, RP0                                                 ;SEGURO LO RESOLVEMOS AL
+                             ESTAR ACOPLANDO EL PWM Y LA RECEPCION SERIAL
+00CB   0008           00391                 RETURN
+                      00392 
+                      00393 
+00CC                  00394 Retardo_400ms 
+00CC   20E1           00395     CALL    Retardo_20ms
+00CD   20E1           00396     CALL    Retardo_20ms
+00CE   20E1           00397     CALL    Retardo_20ms
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00CF   20E1           00398     CALL    Retardo_20ms
+00D0   20E1           00399     CALL    Retardo_20ms
+00D1   20E1           00400     CALL    Retardo_20ms
+00D2   20E1           00401     CALL    Retardo_20ms
+00D3   20E1           00402     CALL    Retardo_20ms
+00D4   20E1           00403     CALL    Retardo_20ms
+00D5   20E1           00404     CALL    Retardo_20ms 
+00D6   20E1           00405     CALL    Retardo_20ms
+00D7   20E1           00406     CALL    Retardo_20ms
+00D8   20E1           00407     CALL    Retardo_20ms
+00D9   20E1           00408     CALL    Retardo_20ms
+00DA   20E1           00409     CALL    Retardo_20ms
+00DB   20E1           00410     CALL    Retardo_20ms
+00DC   20E1           00411     CALL    Retardo_20ms
+00DD   20E1           00412     CALL    Retardo_20ms
+00DE   20E1           00413     CALL    Retardo_20ms
+00DF   20E1           00414     CALL    Retardo_20ms 
+00E0   0008           00415     Return
+                      00416  
+                      00417 ; 5ms 
+00E1                  00418 Retardo_20ms
+00E1   30C8           00419     MOVLW   D'200'; 1cy -> k
+00E2   28E5           00420     GOTO    Retardos_ms ; 2cy 
+                      00421  
+                      00422 ; 5ms 
+00E3                  00423 Retardo_5ms
+00E3   3032           00424     MOVLW   D'50'; 1cy -> k
+00E4   28E5           00425     GOTO    Retardos_ms ; 2cy
+00E5                  00426 Retardos_ms  
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E5   00A8           00427     MOVWF   CUENTA_2; cy
+00E6                  00428 Retardo_Milis
+00E6   30B4           00429     MOVLW   D'180' ; kcy -> x
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E7   00A7           00430     MOVWF   CUENTA ;kcy
+00E8                  00431 BUCLE_milis
+00E8   0000           00432     NOP
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E9   0BA7           00433     DECFSZ  CUENTA,F; kcy(x-1) + 2cy
+00EA   28FB           00434     GOTO    BUCLE   ; 2kcy(x-1)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00EB   0BA8           00435     DECFSZ  CUENTA_2,F ;cy(k-1) + 2cy 
+00EC   28E6           00436     GOTO    Retardo_Milis ;2cy(k-1)
+00ED   0008           00437     RETURN  ;2cy   
+                      00438     
+                      00439     
+                      00440     
+                      00441 ; 1ms = 1000us
+00EE                  00442 Retardo_1ms
+00EE   0000           00443     NOP
+00EF   0000           00444     NOP
+00F0   0000           00445     NOP
+00F1   300A           00446     MOVLW   D'10'; 1cy -> k
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00F2   28F8           00447     GOTO    Retardos ; 2cy
+                      00448 
+00F3                  00449 Retardo_200us
+00F3   3003           00450     MOVLW   D'3'; 1cy -> k
+00F4   28F8           00451     GOTO    Retardos ; 2cy    
+                      00452    
+00F5                  00453 Retardo_300us
+00F5   3003           00454     MOVLW   D'3'; 1cy -> k
+00F6   28F8           00455     GOTO    Retardos ; 2cy
+                      00456     
+                      00457 ;500us 
+00F7                  00458 Retardo_500us
+00F7   3005           00459     MOVLW   D'5'; 1cy -> k
+00F8                  00460 Retardos  
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00F8   00A8           00461     MOVWF   CUENTA_2; cy
+00F9                  00462 Retardo_Micros
+00F9   30A5           00463     MOVLW   D'165' ; kcy -> x
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00FA   00A7           00464     MOVWF   CUENTA ;kcy
+00FB                  00465 BUCLE
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00FB   0BA7           00466     DECFSZ  CUENTA,F; kcy(x-1) + 2cy
+00FC   28FB           00467     GOTO    BUCLE   ; 2kcy(x-1)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00FD   0BA8           00468     DECFSZ  CUENTA_2,F ;cy(k-1) + 2cy 
+00FE   28F9           00469     GOTO    Retardo_Micros ;2cy(k-1)
+00FF   0008           00470     RETURN  ;2cy   
+                      00471 
+                      00472     
+                      00473     
+                      00474 ;100us
+0100                  00475 Retardo_100us; 8CY + 3XCY
+0100   30A4           00476     MOVLW   D'164'
+0101   0000           00477     NOP
+0102   290C           00478     GOTO    Retardo_micros
+                      00479 
+                      00480 ;50us
+0103                  00481 Retardo_50us        ;7cy + 3xcy  
+0103   3051           00482     MOVLW   D'81'
+0104   290C           00483     GOTO    Retardo_micros
+                      00484     
+                      00485 ;20us 
+0105                  00486 Retardo_20us;7CY + 3XCY     
+0105   301F           00487     MOVLW   D'31'
+0106   290C           00488     GOTO    Retardo_micros
+                      00489 
+                      00490 ;10us 
+0107                  00491 Retardo_10us;8CY + 3XCY
+0107   300E           00492     MOVLW   D'14'
+0108   0000           00493     NOP
+0109   290C           00494     GOTO    Retardo_micros  
+                      00495     
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00496 ;5us    
+010A                  00497 Retardo_5us;7CY + 3XCY
+010A   3006           00498     MOVLW   D'6'
+010B   290C           00499     GOTO    Retardo_micros
+010C                  00500 Retardo_micros
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+010C   00A7           00501     MOVWF   CUENTA
+010D                  00502 Bucle
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+010D   0BA7           00503     DECFSZ  CUENTA,F
+010E   290D           00504     GOTO    Bucle
+010F   0008           00505     RETURN 
+                      00506     
+                      00507 ;1us
+0110                  00508 Retardo_1us
+0110   0000           00509     NOP
+0111   0008           00510     RETURN
+                      00511 
+                      00512 
+Warning[205]: Found directive in column 1. (END)
+                      00513 END
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ABRIRVALVULA                      000000AE
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADC                               00000076
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADCS2                             00000006
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+AGUAAA                            0000009B
+APAGARBOMBA                       000000B6
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BOMBAOFF                          000000A8
+BRGH                              00000002
+BUCLE                             000000FB
+BUCLE_milis                       000000E8
+Bucle                             0000010D
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CERRARVALVULA                     000000B4
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CIS                               00000003
+CKE                               00000006
+CKP                               00000004
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000009C
+CMIE                              00000006
+CMIF                              00000006
+CREN                              00000004
+CSRC                              00000007
+CUATRO                            0000008C
+CUENTA                            000000A7
+CUENTA_2                          000000A8
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            0000009D
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+D_A                               00000005
+D_NOT_A                           00000005
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+ENCENDEBOMBA                      000000BB
+ERR_1                             00000019
+ERR_2                             0000001E
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+GCEN                              00000007
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+GO_NOT_DONE                       00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INICIO                            0000003F
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LLENO                             00000097
+MANUAL                            000000C4
+MAYOR4                            0000008E
+MITAD                             00000081
+MLLENO                            00000083
+MVACIO                            0000009F
+NIVEL1                            000000AA
+NIVEL2                            0000009D
+NIVEL3                            00000099
+NIVEL_TINACO                      000000A4
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+OFF                               0000002B
+ON                                00000030
+ON_OFF                            00000025
+OPTION_REG                        00000081
+P                                 00000004
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PLAY                              0000003A
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+RECIBIR                           00000009
+REVISAR                           00000014
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+Retardo_100us                     00000100
+Retardo_10us                      00000107
+Retardo_1ms                       000000EE
+Retardo_1us                       00000110
+Retardo_200us                     000000F3
+Retardo_20ms                      000000E1
+Retardo_20us                      00000105
+Retardo_300us                     000000F5
+Retardo_400ms                     000000CC
+Retardo_500us                     000000F7
+Retardo_50us                      00000103
+Retardo_5ms                       000000E3
+Retardo_5us                       0000010A
+Retardo_Micros                    000000F9
+Retardo_Milis                     000000E6
+Retardo_micros                    0000010C
+Retardos                          000000F8
+Retardos_ms                       000000E5
+S                                 00000003
+SEN                               00000000
+SEQUEMO                           000000AC
+SMP                               00000007
+SMS                               000000A0
+SMS_ERR_STATUS                    000000A1
+SMS_FERR                          000000A2
+SMS_OERR                          000000A3
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000094
+START                             00000073
+STATUS                            00000003
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+W                                 00000000
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_CP_ALL                           00001FFF
+_CP_OFF                           00003FFF
+_CP_ON                            00001FFF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXX-XXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XX-------------- ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   273
+Program Memory Words Free:  7919
+
+
+MPASM  5.51                      CISTERNA.ASM   8-6-2020  22:37:35         PAGE 21
+
+
+
+
+
+Errors   :     0
+Warnings :     7 reported,     0 suppressed
+Messages :    38 reported,     0 suppressed
+
+

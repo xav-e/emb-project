@@ -12,6 +12,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="New Folder 1" projectFiles="true">
+      </logicalFolder>
       <itemPath>PIC1.asm</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -24,13 +26,11 @@
       <itemPath>PIC2.asm</itemPath>
       <itemPath>motor-pwm-AD-Serial.asm</itemPath>
       <itemPath>usart lcd serial.asm</itemPath>
-      <itemPath>../PIC16F877A---TUTORIAL--master/musso ejemplos/serial y comparador.asm</itemPath>
-      <itemPath>../../../SAVING STATUS AND W REGISTERS IN RAM.txt</itemPath>
-      <itemPath>../../../SERIAL.txt</itemPath>
-      <itemPath>Comm S.asm</itemPath>
       <itemPath>CALL OF A SUBROUTINE IN PAGE 1 FROM PAGE 0.txt</itemPath>
       <itemPath>ADC_TINACO.ASM</itemPath>
       <itemPath>CISTERNA_ADC.asm</itemPath>
+      <itemPath>Comm_S.asm</itemPath>
+      <itemPath>../PIC16F877A---TUTORIAL--master/musso ejemplos/serial_comparador.asm</itemPath>
     </logicalFolder>
     <itemPath>INDIRECT ADDRESSING.txt</itemPath>
     <itemPath>INITIALIZING PORTA.txt</itemPath>

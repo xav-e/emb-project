@@ -1,0 +1,37 @@
+Warning[205] ..\PROYECTO\CISTERNA.ASM 1 : Found directive in column 1. (LIST)
+Warning[205] ..\PROYECTO\CISTERNA.ASM 22 : Found directive in column 1. (ORG)
+Message[302] ..\PROYECTO\CISTERNA.ASM 31 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 36 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 38 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 50 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 52 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 60 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 65 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 72 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] ..\PROYECTO\CISTERNA.ASM 95 : Found opcode in column 1. (RETURN)
+Warning[203] ..\PROYECTO\CISTERNA.ASM 102 : Found opcode in column 1. (RETURN)
+Message[302] ..\PROYECTO\CISTERNA.ASM 148 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 151 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 152 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 155 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 156 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 157 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 158 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 166 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 167 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 170 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 171 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 175 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 176 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 178 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 180 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 184 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 198 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 199 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[113]   ..\PROYECTO\CISTERNA.ASM 220 : Symbol not previously defined (Retardo_400ms)
+Error[113]   ..\PROYECTO\CISTERNA.ASM 222 : Symbol not previously defined (Retardo_400ms)
+Message[302] ..\PROYECTO\CISTERNA.ASM 341 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] ..\PROYECTO\CISTERNA.ASM 381 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] ..\PROYECTO\CISTERNA.ASM 388 : Found directive in column 1. (include)
+Error[105]   ..\PROYECTO\CISTERNA.ASM 388 : Cannot open file (Include File "RETARDO.inc" not found)
+Warning[205] ..\PROYECTO\CISTERNA.ASM 389 : Found directive in column 1. (END)
