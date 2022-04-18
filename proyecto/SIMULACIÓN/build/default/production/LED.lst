@@ -1,4 +1,4 @@
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  1
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[207]: Found label after column 1. (DELAY)
 0009                  00035  DELAY
 Warning[207]: Found label after column 1. (LOOP1)
 0009   0B8C           00036     LOOP1 DECFSZ COUNT1, 1
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  2
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -69,7 +69,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000D   0008           00040     RETURN
                       00041  
 3F7A                  00042     END
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  3
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  3
 
 
 SYMBOL TABLE
@@ -128,7 +128,7 @@ CHS1                              00000004
 CHS2                              00000005
 CIS                               00000003
 CKE                               00000006
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  4
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  4
 
 
 SYMBOL TABLE
@@ -187,7 +187,7 @@ INTCON                            0000000B
 INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  5
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  5
 
 
 SYMBOL TABLE
@@ -246,7 +246,7 @@ RA1                               00000001
 RA2                               00000002
 RA3                               00000003
 RA4                               00000004
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  6
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  6
 
 
 SYMBOL TABLE
@@ -305,7 +305,7 @@ SMP                               00000007
 SPBRG                             00000099
 SPEN                              00000007
 SREN                              00000005
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  7
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  7
 
 
 SYMBOL TABLE
@@ -364,7 +364,7 @@ TRISA1                            00000001
 TRISA2                            00000002
 TRISA3                            00000003
 TRISA4                            00000004
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  8
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  8
 
 
 SYMBOL TABLE
@@ -423,7 +423,7 @@ _BODEN_OFF                        00003FBF
 _BODEN_ON                         00003FFF
 _BOREN_OFF                        00003FBF
 _BOREN_ON                         00003FFF
-MPASM 5.86                           LED.ASM   8-1-2020  14:34:40         PAGE  9
+MPASM 5.86                           LED.ASM   8-28-2020  23:10:19         PAGE  9
 
 
 SYMBOL TABLE
